@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --bg-color-primary: #1a231f;
+  --bg-color-secondary: #29422b;
+  --text-color-primary: #ffc229;
+}
+
+@font-face {
+  font-family: "LFT Etica Mono Regular";
+  src: url("./assets/fonts/LFTEticaMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LFT Etica Mono SemiBold";
+  src: url("./assets/fonts/LFTEticaMono-SemiBold.woff2") format("woff2");
+}
+
+:root {
+  background-color: var(--bg-color-primary);
+}
+
+* {
+  font-family: "LFT Etica Mono Regular";
+}
+
+canvas {
+  height: 100vh !important;
+}
