@@ -2,8 +2,11 @@ import videoBg from "/src/assets/coffee-making.mp4"; // Import the video
 
 const MainVideo = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between px-20 py-40 text-white md:space-x-20">
-      <div className="md:w-2/5 text-center md:text-left">
+    <div
+      id="main-video-section"
+      className="flex flex-col lg:flex-row items-center justify-between lg:px-20 py-20  text-white lg:space-x-20 lg:space-y-0 space-y-10"
+    >
+      <div className="lg:w-2/5 text-center lg:text-left lg:px-0 px-10">
         <h2 className="text-4xl font-bold mb-4">Experience the Best Coffee</h2>
         <p className="text-lg text-gray-300 mb-6">
           Big Brave Coffee offers the richest flavors and smoothest blends for
@@ -14,9 +17,9 @@ const MainVideo = () => {
         </button>
       </div>
 
-      <div className="md:w-3/5 mt-8 md:mt-0">
+      <div className="lg:w-3/5 mt-8 lg:mt-0">
         <video
-          className="w-full h-[600px] rounded-lg shadow-lg bg-black object-cover"
+          className="w-full lg:h-[600px] h-[480px] rounded-lg shadow-lg bg-black object-cover"
           src={videoBg}
           autoPlay
           loop

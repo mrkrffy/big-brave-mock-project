@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards } from "swiper/modules";
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
+import { useState, useEffect } from "react";
 
 import "swiper/css";
 import "swiper/css/effect-cards";
@@ -81,21 +82,38 @@ const testimonials = [
 ];
 
 export default function CoverflowSlider() {
+  const [direction, setDirection] = useState("horizontal");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setDirection("vertical");
+      } else {
+        setDirection("horizontal");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section className="flex justify-center items-center min-h-screen px-60 flex-row">
-      <div className="bg-gray-900 md:w-1/2 h-[500px] flex items-center pl-16 rounded-3xl -mr-20">
-        <div className="md:w-1/2">
-          <h1 className="text-5xl font-bold text-orange-100 md:text-6xl">
+    <section className="flex justify-center items-center my-20 lg:my-40 xl:px-60 lg:flex-row flex-col space-y-0 px-8">
+      <div className="bg-[#1F2A26] lg:w-1/2 lg:h-[500px] w-full flex items-center lg:pl-16 rounded-3xl lg:-mr-20 lg:justify-start justify-center lg:py-10 pb-30 pt-10 px-4">
+        <div className="lg:w-1/2">
+          <h1 className="text-3xl uppercase font-bold text-orange-100 lg:text-4xl xl:text-6xl  lg:text-left text-center">
             Testimonials
           </h1>
-          <h2 className="mt-4 text-1xl font-bold text-orange-100 sm:text-4xl md:text-2xl">
+          <h2 className="mt-4 text-sm font-bold text-orange-100  lg:text-lg xl:text-2xl lg:text-left text-center">
             Why People Love Big Brave Coffee
           </h2>
         </div>
       </div>
       <Swiper
         effect={"cards"}
-        direction={"vertical"}
+        direction={direction}
         grabCursor={true}
         loop={true}
         autoplay={{
@@ -103,12 +121,12 @@ export default function CoverflowSlider() {
           disableOnInteraction: false,
         }}
         modules={[EffectCards, Autoplay]}
-        className="md:w-1/2 h-[550px]"
+        className="lg:w-1/2 lg:h-[550px] h-auto w-full lg:mt-0 -mt-20"
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide
             key={index}
-            className=" bg-gray-900 drop-shadow-xl  rounded-3xl"
+            className="bg-[#333C39] drop-shadow-xl rounded-3xl"
           >
             <div className="flex justify-center items-center flex-col h-full p-10 space-y-5">
               <div className="flex items-center mt-4">
@@ -126,7 +144,7 @@ export default function CoverflowSlider() {
                   )
                 )}
               </div>
-              <div className="text-gray-300 mt-2 text-center mb-15">
+              <div className="text-gray-300 mt-2 text-center mb-15 lg:mb-10">
                 <span className="text-yellow-500 text-xl">“</span>
                 {testimonial.review}
                 <span className="text-yellow-500 text-xl">”</span>
