@@ -51,7 +51,7 @@ const PartnerBrands = () => {
         <SwiperSlide key={index}>
           <div className="bg-[#1F2A26] flex items-center justify-center h-50 p-10 rounded-xl">
             <img
-              src={`/partners/${brand}.svg`}
+              src={`${import.meta.env.BASE_URL}partners/${brand}.svg`}
               alt={brand}
               className="w-full h-full object-contain"
             />

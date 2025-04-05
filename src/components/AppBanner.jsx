@@ -1,24 +1,29 @@
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import Coffee from "./Coffee";
+import React, { Suspense } from "react";
+import Casket from "./Casket";
 import bgImage from "../assets/banner-bg.jpg";
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
 
-function AppBanner() {
+const AppBanner = () => {
+  const LoadingSpinner = () => (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+  );
+
   return (
     <>
       <div
         className="h-screen bg-cover bg-center "
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className="absolute inset-x-0 -inset-y-6 bg-[var(--bg-color-primary)]/30 backdrop-blur-lg"></div>
-        <div className="absolute inset-x-0 -inset-y-6 bg-gradient-to-t from-[var(--bg-color-primary)] to-transparent"></div>
+        <div className="absolute inset-x-0 -inset-y-16 bg-[var(--bg-color-primary)]/30 backdrop-blur-lg"></div>
+        <div className="absolute inset-x-0 -inset-y-16 bg-gradient-to-t from-[var(--bg-color-primary)] to-transparent"></div>
 
-        <Canvas camera={{ position: [6, 3, 5] }} className="z-40">
-          <ambientLight intensity={2} />
-          <OrbitControls enableZoom={false} enablePan={false} />
-          <Coffee position={[0, -1, 0]} scale={25} />
-          <Environment preset="city" />
+        <Canvas camera={{ position: [0, 0, 10] }}>
+          <ambientLight intensity={2.5} />
+          <Suspense fallback={null}>
+            <Casket scale={40} />
+          </Suspense>
         </Canvas>
 
         <div
@@ -28,12 +33,10 @@ function AppBanner() {
               .getElementById("main-video-section")
               ?.scrollIntoView({ behavior: "smooth" })
           }
-        >
-          <ChevronDoubleDownIcon className="h-6 mx-auto animate-bounce" />
-        </div>
+        ></div>
       </div>
     </>
   );
-}
+};
 
 export default AppBanner;

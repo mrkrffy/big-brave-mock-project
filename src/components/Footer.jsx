@@ -23,7 +23,9 @@ const Footer = () => {
             key={index}
           >
             <img
-              src={`/socials/${social.toLowerCase()}.svg`}
+              src={`${
+                import.meta.env.BASE_URL
+              }socials/${social.toLowerCase()}.svg`}
               alt={social}
               className="w-5 h-5  filter invert brightness-0"
             />

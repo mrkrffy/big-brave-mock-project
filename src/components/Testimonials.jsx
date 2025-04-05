@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards } from "swiper/modules";
-import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
-import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
+import { HiOutlineStar, HiStar } from "react-icons/hi2";
 import { useState, useEffect } from "react";
 
 import "swiper/css";
@@ -100,13 +99,13 @@ export default function CoverflowSlider() {
   }, []);
 
   return (
-    <section className="flex justify-center items-center my-20 lg:my-40 xl:px-60 lg:flex-row flex-col space-y-0 px-8">
+    <section className="flex justify-center items-center my-20 lg:my-40 xl:px-40 lg:flex-row flex-col space-y-0 px-8">
       <div className="bg-[#1F2A26] lg:w-1/2 lg:h-[500px] w-full flex items-center lg:pl-16 rounded-3xl lg:-mr-20 lg:justify-start justify-center lg:py-10 pb-30 pt-10 px-4">
         <div className="lg:w-1/2">
-          <h1 className="text-3xl uppercase font-bold text-orange-100 lg:text-4xl xl:text-6xl  lg:text-left text-center">
+          <h1 className="text-3xl uppercase font-bold text-orange-100 xl:text-5xl  lg:text-left text-center">
             Testimonials
           </h1>
-          <h2 className="mt-4 text-sm font-bold text-orange-100  lg:text-lg xl:text-2xl lg:text-left text-center">
+          <h2 className="mt-6 text-sm text-orange-100 lg:text-lg xl:text-xl lg:text-left text-center leading-8">
             Why People Love Big Brave Coffee
           </h2>
         </div>
@@ -132,12 +131,12 @@ export default function CoverflowSlider() {
               <div className="flex items-center mt-4">
                 {[...Array(5)].map((_, index) =>
                   index < testimonial.rating ? (
-                    <StarIconSolid
+                    <HiStar
                       key={index + testimonial.rating}
                       className="w-10 h-10 text-yellow-500"
                     />
                   ) : (
-                    <StarIconOutline
+                    <HiOutlineStar
                       key={index + testimonial.rating}
                       className="w-10 h-10 text-gray-500"
                     />

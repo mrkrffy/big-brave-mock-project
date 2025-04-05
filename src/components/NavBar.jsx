@@ -1,4 +1,4 @@
-import assetLogo from "../assets/logo.png";
+import assetLogo from "../assets/wfc-logo-light.svg";
 
 const NavBar = () => {
   return (
